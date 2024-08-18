@@ -14,6 +14,7 @@ export const STORAGE_STATE = path.join(__dirname, 'playwright/.auth/user.json')
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
+
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -33,23 +34,28 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    baseURL: 'https://en.wikipedia.org/wiki/Main_Page',
+    //baseURL: 'https://en.wikipedia.org/wiki/Main_Page',
+    baseURL: 'https://ecommerce-playground.lambdatest.io/index.php?',
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'setup',
-      testMatch: '**/*.setup.ts'
+      name: 'lambda',
+      testMatch: '**/*addToCart.spec.ts'
     },
-    {
-      name: 'e2e tests logged in',
-      testMatch: '**/*loggedin.spec.ts',
-      dependencies: ['setup'],
-      use: {
-        storageState: STORAGE_STATE,
-      }
-    },
+    // {
+    //   name: 'setup',
+    //   testMatch: '**/*.setup.ts'
+    // },
+    // {
+    //   name: 'e2e tests logged in',
+    //   testMatch: '**/*loggedin.spec.ts',
+    //   dependencies: ['setup'],
+    //   use: {
+    //     storageState: STORAGE_STATE,
+    //   }
+    // },
     // {
     //   name: 'chromium',
     //   use: { ...devices['Desktop Chrome'] },

@@ -31,17 +31,14 @@ export default class RegisterPage {
     }
 
     async isSubscribeChecked() {
-        await this.page.locator("#input-newsletter-no").isChecked();
+        return await this.page.locator("#input-newsletter-no").isChecked();
     }
 
     async clickPrivacyPolicy() {
-        await this.page.click("#input-agree");
+        await this.page.click("//label[@for='input-agree']");
     }
 
     async clickContinueToRegister() {
-        await Promise.all([
-            this.page.waitForNavigation({ waitUntil: "networkidle" }),
-            await this.page.click("input[value='Continue']")
-        ])
+        await this.page.click("input[value='Continue']")
     }
 }

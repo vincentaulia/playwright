@@ -15,6 +15,6 @@ export default class HomePage {
     }
 
     async clickSpecialHotBtn() {
-        this.page.click("(//span[contains(text(), 'Special')]/../..)[2]")
+        await this.page.click("'Special Hot'");
     }
 }
